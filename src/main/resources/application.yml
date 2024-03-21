@@ -1,0 +1,35 @@
+#이하공통
+mybatis:
+   type-aliases-package: com.danbplus.example.mybatis
+   
+spring:
+  thymeleaf:
+     cache: false
+     prefix: classpath:/templates/
+     suffix: .html
+     #view-names: thymeleaf/*  
+  
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy : org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+   
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #jdbc-url: jdbc:mysql://210.123.11.87:53306/danbplusSTS?UTC&allowPublickeyRetrieval=true  # 테스트 DB
+    jdbc-url: jdbc:mysql://dev.danbplus.com:53306/danbplusSTS?UTC&allowPublickeyRetrieval=true  # 테스트 DB
+    #jdbc-url: jdbc:mysql://103.55.190.147:3306/danbplusSTS?UTC&allowPublickeyRetrieval=true   # 리얼 DB
+    username: danbplus
+    password: Danb1235!!
+    maximum-pool-size: 5
+    max-lifetime: 1800000
+    idle-timeout: 180000
+    connection-timeout: 5000
+    transaction-isolation: TRANSACTION_READ_UNCOMMITTED
