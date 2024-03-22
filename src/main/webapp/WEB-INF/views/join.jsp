@@ -16,5 +16,15 @@
 	    <input type="submit" value="회원가입">
     </form>
 </body>
+<script type="text/javascript">
 
+
+
+
+
+
+
+
+
+</script>
 

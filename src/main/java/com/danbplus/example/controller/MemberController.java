@@ -1,5 +1,6 @@
 package com.danbplus.example.controller;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,7 +53,7 @@ public class MemberController {
   public ModelAndView test(HttpServletRequest request, MEMBER member, Model model) {
     ModelAndView mv = new ModelAndView();
     int userNo = 1;
-    java.util.List<MEMBER> list = memberService.getName(userNo);
+    List list = memberService.getName(userNo);
     log.info("결과 : " + list);
     mv.setViewName("/index");
     return mv;

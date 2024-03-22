@@ -1,6 +1,7 @@
 #이하공통
 mybatis:
    type-aliases-package: com.danbplus.example.mybatis
+   mapper-locations: /mapper/mybatis/*.xml
    
 spring:
   thymeleaf:
@@ -11,21 +12,26 @@ spring:
   
   jpa:
     show-sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    generate-ddl: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
       naming:
         physical-strategy : org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-        
+      
   mvc:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
-   
+      
+  devtools:
+   livereload: 
+     enabled: false
+        
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    #jdbc-url: jdbc:mysql://210.123.11.87:53306/danbplusSTS?UTC&allowPublickeyRetrieval=true  # 테스트 DB
-    jdbc-url: jdbc:mysql://dev.danbplus.com:53306/danbplusSTS?UTC&allowPublickeyRetrieval=true  # 테스트 DB
-    #jdbc-url: jdbc:mysql://103.55.190.147:3306/danbplusSTS?UTC&allowPublickeyRetrieval=true   # 리얼 DB
+    jdbc-url: jdbc:mysql://dev.danbplus.com:53306/danbplusSTS_SHJ?UTC&allowPublickeyRetrieval=true
     username: danbplus
     password: Danb1235!!
     maximum-pool-size: 5

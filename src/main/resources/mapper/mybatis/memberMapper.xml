@@ -11,7 +11,7 @@
 			id,
 			phone
 		FROM
-			member
+			MEMBER
 		WHERE
 			userNo = #{userNo}
 	</select>

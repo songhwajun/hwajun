@@ -1,19 +1,13 @@
 package com.danbplus.example.domain;
 
-import java.sql.Timestamp;
-
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import jakarta.persistence.Table;
-import jakarta.persistence.Entity;
-
 import org.apache.ibatis.type.Alias;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
 
 //JPA사용시 어노테이션 작성
 //기존TABLE명이용시 table 어노테이션 작성
-//@Entity
+@Entity
 @Table(name="MEMBER")
 //Mybatis 별칭 기능 사용시 선언
 @Alias("MEMBER")
@@ -27,6 +21,7 @@ import org.apache.ibatis.type.Alias;
 */
 public class MEMBER {
 	
+    @Id
 	private int userNo;			// 회원번호
 	private String id;      	// 아이디
 	private String name; 	// 이름
