@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="10 seconds">
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>%d{HH:mm:ss} [%-5level] %logger{36}[line: %L] - %msg%n</Pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/LOG/WAS/vacation/service.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/LOG/WAS/vacation/service-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>50</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <Pattern>%d{HH:mm:ss} [%-5level] %logger{36}[line: %L] - %msg%n</Pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!-- 위에 PROPERTY로 정의한 LOG_PATTERN 가져다 사용하기 -->
+            <pattern>%-5level %d{yy-MM-dd HH:mm:ss}[%thread] [%logger{0}:%line] - %msg%n</pattern>
+        </encoder>
+   	    </appender>
+    
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+	    <encoder>
+	      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+	    </encoder>
+  	</appender>
+    
+    <logger name="com.artiplace.api" level="debug"/>
+    
+<!--     <logger name="org.springframework.jdbc" level="DEBUG" /> -->
+    	<root level="INFO">
+	        <appender-ref ref="CONSOLE"/>
+			<appender-ref ref="STDOUT"/>
+	        <appender-ref ref="FILE"/>
+	    </root>
+</configuration>

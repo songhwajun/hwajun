@@ -1,6 +1,7 @@
 package com.danbplus.example.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,7 +36,7 @@ public class MemberController {
   //회원가입 페이지 출력 요청
   @GetMapping("/join")
   public String joinForm() {
-      return "join";
+      return    "join";
   }
 
   /*
@@ -49,8 +50,18 @@ public class MemberController {
   */
   
   @RequestMapping("/join") //userNo갑 requestparam에 담아옴
-  
   public ModelAndView test(HttpServletRequest request, MEMBER member, Model model) {
+    ModelAndView mv = new ModelAndView();
+    int userNo = 1;
+    List list = memberService.getName(userNo);
+    log.info("결과 : " + list);
+    mv.setViewName("/index");
+    return mv;
+  }
+  
+  
+  @RequestMapping("/test") //userNo갑 requestparam에 담아옴
+  public ModelAndView realtest(HttpServletRequest request, MEMBER member, Model model) {
     ModelAndView mv = new ModelAndView();
     int userNo = 1;
     List list = memberService.getName(userNo);
