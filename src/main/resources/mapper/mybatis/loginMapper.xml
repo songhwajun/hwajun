@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.danbplus.example.repository.mapper.LoginMapper">
+	
+	<!-- id 중복확인 -->
+	<select id="getDuplicateCheck" resultType="int" parameterType="String">
+		SELECT
+			count(id)
+		FROM
+			LOGIN
+		WHERE
+			id = #{id}
+	</select>
+	
+	<!-- 회원가입 -->
+		
+	<insert id="join" useGeneratedKeys="true"  parameterType="hashMap">
+		INSERT INTO LOGIN
+		(
+			id
+			, password
+			, passwordErr
+		)
+		VALUES (
+			#{id}
+			, #{password}
+			, 0
+		)
+	</insert>
+	
+</mapper>

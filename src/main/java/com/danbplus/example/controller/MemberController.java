@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.danbplus.example.domain.MEMBER;
 import com.danbplus.example.service.MemberService;
@@ -59,15 +60,19 @@ public class MemberController {
     return mv;
   }
   
-  
-  @RequestMapping("/test") //userNo갑 requestparam에 담아옴
-  public ModelAndView realtest(HttpServletRequest request, MEMBER member, Model model) {
-    ModelAndView mv = new ModelAndView();
+  @ResponseBody
+  @RequestMapping("/MemberController/join.act") //userNo갑 requestparam에 담아옴
+  public String join(MEMBER member, Model model) {
+    String result = "정상적으로 처리되었습니다.";
+    log.info("MemberController/join.act 실행중");
     int userNo = 1;
+    
+    
+    
+    
     List list = memberService.getName(userNo);
     log.info("결과 : " + list);
-    mv.setViewName("/index");
-    return mv;
+    return result;
   }
   
 }

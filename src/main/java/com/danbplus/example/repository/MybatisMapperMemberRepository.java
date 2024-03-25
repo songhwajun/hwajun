@@ -2,10 +2,7 @@ package com.danbplus.example.repository;
 
 import java.util.HashMap;
 
-
-
 import java.util.List;
-import java.util.Optional;
 import org.springframework.stereotype.Repository;
 import com.danbplus.example.domain.MEMBER;
 import com.danbplus.example.repository.mapper.MemberMapper;

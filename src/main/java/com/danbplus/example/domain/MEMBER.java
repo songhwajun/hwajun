@@ -1,6 +1,7 @@
 package com.danbplus.example.domain;
 
 import org.apache.ibatis.type.Alias;
+
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
