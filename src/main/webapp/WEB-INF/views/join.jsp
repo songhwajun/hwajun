@@ -73,7 +73,7 @@
 			}			
 			
 			if(duplicateCheck == "N"){
-				alert("중복확인")
+				alert("이미 사용중인 ID로는 재 가입이 불가능 합니다.")
 				return;
 			}
 			

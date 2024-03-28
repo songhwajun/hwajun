@@ -25,7 +25,7 @@ spring:
       prefix: /WEB-INF/views/
       suffix: .jsp
       
-  devtools:
+  devtools: 
    livereload: 
      enabled: false
         

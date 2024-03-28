@@ -34,23 +34,8 @@ public class MemberController {
   public MemberController(MemberService memberService) {
     this.memberService = memberService;
   }
-  //회원가입 페이지 출력 요청
-  @GetMapping("/join")
-  public String joinForm() {
-      return    "join";
-  }
-
-  /*
-  @PostMapping("/join")    // name값을 requestparam에 담아온다
-  public String save(@ModelAttribute MemberDTO memberDTO) {
-    System.out.println("MemberController.save");
-    System.out.println("memberDTO = " + memberDTO);
-    MemberService.save(memberDTO);
-    return "index";
-  }
-  */
   
-  @RequestMapping("/join") //userNo갑 requestparam에 담아옴
+  @RequestMapping("/dbtest") //userNo갑 requestparam에 담아옴
   public ModelAndView test(HttpServletRequest request, MEMBER member, Model model) {
     ModelAndView mv = new ModelAndView();
     int userNo = 1;
@@ -66,9 +51,6 @@ public class MemberController {
     String result = "정상적으로 처리되었습니다.";
     log.info("MemberController/join.act 실행중");
     int userNo = 1;
-    
-    
-    
     
     List list = memberService.getName(userNo);
     log.info("결과 : " + list);

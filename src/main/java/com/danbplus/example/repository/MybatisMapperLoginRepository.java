@@ -38,9 +38,6 @@ public class MybatisMapperLoginRepository implements LoginRepository{
     HashMap<String, String> map = new HashMap();
     map.put("id", login.getId());
     map.put("password", login.getPassword());
-    log.info("" + map);
-    log.info(map.get("id"));
-    log.info(map.get("password"));
     loginMapper.join(map);
     
     return login;

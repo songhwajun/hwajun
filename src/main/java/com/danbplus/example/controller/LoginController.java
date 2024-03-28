@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import com.danbplus.example.domain.MEMBER;
 import com.danbplus.example.domain.LOGIN;
 import com.danbplus.example.service.MemberService;
@@ -23,10 +24,26 @@ public class LoginController {
     this.loginService = loginService;
   }
   
+  //회원가입 페이지 출력 요청
+  @RequestMapping("/join")
+  public ModelAndView joinForm() {
+    ModelAndView mv = new ModelAndView();
+    mv.setViewName("/join");
+    return mv;
+  }
+  
+//회원가입 페이지 출력 요청
+  @RequestMapping("/login")
+  public ModelAndView loginForm() {
+    ModelAndView mv = new ModelAndView();
+    mv.setViewName("/login");
+    return mv;
+  }
+  
   @ResponseBody
   @RequestMapping("/LoginController/duplicateCheck.act")
   public int duplicateCheck(LOGIN login, Model model) {
-    log.info("LoginController/duplicateCheck.act || model :: " + model);
+    log.info("LoginController/duplicateCheck.act");
     
     //화면에서 가져오는 id값을 넣어서 보낸다.
     String id = login.getId();
