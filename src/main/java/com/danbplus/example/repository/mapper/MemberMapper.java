@@ -9,4 +9,5 @@ import com.danbplus.example.domain.MEMBER;
 public interface MemberMapper {
 
 	List<MEMBER> getName(HashMap map);	// 회원 휴가내역 전체조회
+	void newMember(HashMap map); //로그인 정보 등록
 }

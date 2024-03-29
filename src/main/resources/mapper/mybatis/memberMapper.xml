@@ -15,4 +15,21 @@
 		WHERE
 			userNo = #{userNo}
 	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="newMember" useGeneratedKeys="true"  parameterType="hashMap">
+		INSERT INTO MEMBER
+		(
+			id
+			, name
+			, phone
+			, registDt
+		)
+		VALUES (
+			#{id}
+			, #{name}
+			, #{phone}
+			, #{registDt}
+		)
+	</insert>
 </mapper>

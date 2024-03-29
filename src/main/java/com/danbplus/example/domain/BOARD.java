@@ -30,6 +30,7 @@ public class BOARD {
   private String content;   // 내용
   private String registDate;  // 작성일
   private String updateDate;  // 수정일
+  private String userName; //회원이름
   
   public int getBoardNum() {
     return boardNum;
@@ -55,6 +56,13 @@ public class BOARD {
   public void setContent(String content) {
       this.content = content;
   }
+  public String getUserName() {
+    return userName;
+  }
+  public void setUserName(String userName) {
+    this.userName = userName;
+  }
+  
   public String getRegistDate() {
       return registDate;
   }
@@ -72,7 +80,7 @@ public class BOARD {
   public String toString() {
       return "BOARD [boardNum=" + boardNum + ", userNo=" + userNo + ", title="
               + title + ", content=" + content + ", registDate=" + registDate + 
-              ", updateDate" + updateDate + "]";
+              ", updateDate=" + updateDate + ", userName=" + userName + "]";
   }
   
 }

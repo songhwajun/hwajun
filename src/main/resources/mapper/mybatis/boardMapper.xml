@@ -3,5 +3,34 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.danbplus.example.repository.mapper.BoardMapper">
+	<!-- 게시글조회 -->
+	<select id="getBoardList" resultType="com.danbplus.example.domain.BOARD" parameterType="hashMap">
+		SELECT  
+			boardNum,
+			userNo,
+			title, 
+			content, 
+			registDate, 
+			updateDate,
+			userName
+		FROM 
+			BOARD  
+		order by registDate desc;
+	</select>	
+	
+	<select id="getDetailInfo" resultType="com.danbplus.example.domain.BOARD" parameterType="hashMap">
+		SELECT  
+			boardNum,
+			userNo,
+			title, 
+			content, 
+			registDate, 
+			updateDate,
+			userName
+		FROM 
+			BOARD  
+		WHERE
+			boardNum = #{num}
+	</select>
 	
 </mapper>

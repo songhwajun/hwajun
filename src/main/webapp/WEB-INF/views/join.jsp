@@ -4,11 +4,13 @@
 	<br>
 	<div>
 		<!-- name : 서버로 전송 할 때 변수이름의 역할 -->
-	    <label>이메일 : </label><input type="text" id="memberEmail"> <button id="duplicateCheck" value="N">중복확인</button> 
+	    <label>아이디 : </label><input type="text" id="memberEmail"> <button id="duplicateCheck" value="N">중복확인</button> 
 	    <label id="duplicateCheckTrue" style="display:none;">이미 사용중인 ID입니다</label>
 	    <label id="duplicateCheckFalse" style="display:none;">사용가능한 ID입니다</label> 
 	    <br>
 	    <label>비밀번호 : </label><input type="password" id="memberPassword"> <br>
+	    <label>이름 : </label><input type="text" id="memberName"> <br>
+	    <label>휴대폰 : </label><input type="text" id="memberPhone"> <br>
     </div>
     <button id="join">회원가입</button>
 </div>
@@ -61,14 +63,22 @@
 		$(dom).find("#join").on('click', function(){
 			var id = $(dom).find("#memberEmail").val();
 			var pw = $(dom).find("#memberPassword").val();
+			var name = $(dom).find("#memberName").val();
+			var phone = $(dom).find("#memberPhone").val();
 			var duplicateCheck = $(dom).find("#duplicateCheck").val();
 			
-			if(id == "" || pw == ""){
-				var type = "비밀번호를"
-				if(id == "") {
-					type = "이메일을"		
+			if(id == "" || pw == "" || name == "" || phone == ""){
+				var title = "";
+				if(id == ""){
+					title = "아이디를";
+				}else if(pw == ""){
+					title = "비밀번호를";
+				}else if(name == ""){
+					title = "이름을";
+				}else if(phone == ""){
+					title = "휴대폰번호를";
 				}
-				alert("" + type + " 입력해주세요");
+				alert(title + " 입력해주세요");
 				return;
 			}			
 			
@@ -80,21 +90,15 @@
 			var param = {};
 			param.id = id;
 			param.password = pw;
+			param.name = name;
+			param.phone = phone;
 			param.passwordErr = 0;
 			
-			console.log("ajax전송");
 			ajaxAction(param, "text", "/LoginController/join.act", function(data){
 				alert(data);
 				document.location.href = document.location.href;
 			});
 		});
-		
-		
-		
-		
-		
-		
-		
 	
 	});
 </script>

@@ -18,10 +18,12 @@ import lombok.extern.slf4j.Slf4j;
 public class LoginController {
 
   private final LoginService loginService;
+  private final MemberService memberService;
   
   @Autowired
-  public LoginController(LoginService loginService) {
+  public LoginController(LoginService loginService, MemberService memberService) {
     this.loginService = loginService;
+    this.memberService = memberService;
   }
   
   //회원가입 페이지 출력 요청
@@ -54,7 +56,7 @@ public class LoginController {
   
   @ResponseBody
   @RequestMapping("/LoginController/join.act")
-  public String join(LOGIN login, Model model) {
+  public String join(LOGIN login, MEMBER member, Model model) {
     log.info("LoginController/join.act || model :: " + model);
     
     String result = "회원가입이 정상적으로 처리되었습니다.";
@@ -64,6 +66,13 @@ public class LoginController {
         loginService.join(login);
     } catch (Exception e) {
         errMsg = e.getMessage();
+    }
+    
+    //회원정보 insert
+    try {
+        memberService.newMember(member);
+    } catch (Exception e) {
+      errMsg = e.getMessage();
     }
     
     return result;

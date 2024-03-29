@@ -1,13 +1,22 @@
 <%@ page pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
 <div id="boardJsp">
-	<a href="/">뒤로가기</a>
-	<br>
+<a href="/">뒤로가기</a>
 	<div>
-		<!-- name : 서버로 전송 할 때 변수이름의 역할 -->
-	    <label>글 제목</label>
-	    <label id="duplicateCheckTrue">글 내용</label>
+		<c:forEach var="item" items="${boardList}">
+	    	<div>
+	    		<label>제목 :</label>
+	    		<span>${item.title}</span>
+	    	</div>
+	    	<div>
+	    		<label>내용 :</label>
+	    		<span>${item.content}</span>
+	    	</div>
+		</c:forEach>
     </div>
-    <button id="join">회원가입</button>
 </div>
 
 <script type="text/javascript" src="/resource/jquery/jquery-3.6.1.min.js"></script>

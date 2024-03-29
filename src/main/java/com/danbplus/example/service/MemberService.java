@@ -26,4 +26,8 @@ public class MemberService {
       return memberRepository.getName(userNo);
   }
 
+  public String newMember(MEMBER member){
+    memberRepository.newMember(member);
+    return member.getId();
+  }
 }
