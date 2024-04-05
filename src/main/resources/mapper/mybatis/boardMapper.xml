@@ -15,7 +15,7 @@
 			userName
 		FROM 
 			BOARD  
-		order by registDate desc;
+		order by boardNum desc;
 	</select>	
 	
 	<select id="getDetailInfo" resultType="com.danbplus.example.domain.BOARD" parameterType="hashMap">
@@ -32,5 +32,26 @@
 		WHERE
 			boardNum = #{num}
 	</select>
+	
+	<insert id="write" useGeneratedKeys="true"  parameterType="hashMap">
+		INSERT INTO BOARD
+		(
+			userNo
+			, title
+			, content
+			, registDate
+			, updateDate
+			, userName
+		)
+		VALUES (
+			#{userNo}
+			, #{title}
+			, #{content}
+			, #{registDate}
+			, #{updateDate}
+			, #{userName}
+			
+		)
+	</insert>
 	
 </mapper>

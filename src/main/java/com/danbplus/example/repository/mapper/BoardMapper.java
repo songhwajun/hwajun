@@ -10,4 +10,5 @@ import com.danbplus.example.domain.LOGIN;
 public interface BoardMapper {
   List<BOARD> getBoardList(HashMap map);
   List<BOARD> getDetailInfo(int num);
+  List<BOARD> write(HashMap map);
 }

@@ -59,55 +59,56 @@ a {color:black;
 text-decoration-line : none;}
     </style>
 </head>
-<div id="boardJsp">
-	<div>
-		<c:forEach var="item" items="${boardList}">
-	    	<div>
-	    		<label>제목 :</label>
-	    		<span>${item.title}</span>
-	    	</div>
-	    	<div>
-	    		<label>내용 :</label>
-	    		<span>${item.content}</span>
-	    	</div>
-	    	<div style="display:none;">
-	    		<input type="hidden" id="boardNum" value="${item.boardNum}"/>
-	    		<input type="hidden" id="userNo" value="${item.userNo}"/>
-	    		<input type="hidden" id="userName" value="${item.userName}"/>
-	    		<input type="hidden" id="title" value="${item.title}"/>
-	    		<input type="hidden" id="content" value="${item.content}"/>
-	    	</div>
-		</c:forEach>
-    </div>
-    <span class="left;">
-    	<input type="button" id="modify" value="글수정" style="margin-top: 50px;">
-		<input type="button" id="back" value="글목록" style="margin-top: 50px;">
-	</span>
+<div id="writeJsp">
+	<div class="panel-heading">게시글 작성하기</div>
+	<div class="panel-body">
+			<!-- 
+			<div class="form-group">
+				<label>작성자</label> 
+                	<input class="form-control" name="writer" value="${name}" readonly>
+			</div>
+			 -->
+			<div class="form-group">
+				<label>제목</label> 
+                <input class="form-control" id="title" name="title">
+			</div>
+			<div class="form-group">
+				<label>내용</label>
+					<textarea class="form-control" id="content" rows="3" name="content"></textarea>
+			</div>	
+		
+			<input type="button" id="submit" class="btn btn-default" value="글 등록하기" style=	"margin-top: 50px;">
+			<input type="button" id="back" class="btn btn-default" value="글 목록보기" style="margin-top: 50px;">
+	</div>
 </div>
 
 <script type="text/javascript" src="/resource/jquery/jquery-3.6.1.min.js"></script>
 <script type="text/javascript" src="/resource/cmm/com.js"></script>
 
 <script type="text/javascript">
-	documentReady("#boardJsp" , function(dom){
+	documentReady("#writeJsp" , function(dom){
 		
 		//글 목록(뒤로가기)
 		$(dom).find("#back").on('click', function(){
 			location.href = "/";
 		});
-	
-		//글 수정
-		$(dom).find("#modify").on('click', function(){
-			var test = "${boardList}" || "";
-			
+		
+		
+		//글 작성
+		$(dom).find("#submit").on('click', function(){
+			console.log("테스트진행중")
 			var param = {};
-			param.boardNum = $(dom).find("#boardNum").val();
-			param.userNo = $(dom).find("#userNo").val();
-			param.userName = $(dom).find("#userName").val();
-			param.title = $(dom).find("#title").val();
-			param.content = $(dom).find("#content").val();
 			
-			console.log(param);
+			param.userNo = "1";
+			param.title = $(dom).find("#title").val(); 
+			param.content = $(dom).find("#content").val();
+			param.userName = "송화준";
+			
+			ajaxAction(param, "text", "/BoardController/write.act", function(data){
+				alert(data);
+				document.location.href = "/";
+			});
+			
 		});
 	});
 </script>

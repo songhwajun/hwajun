@@ -1,5 +1,7 @@
 package com.danbplus.example.repository;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import org.springframework.stereotype.Repository;
@@ -37,4 +39,30 @@ public class MybatisMapperBoardRepository implements BoardRepository{
     return list;
   }
   
+  /**
+   * 게시판 글 상세 조회  
+   */
+  @Override
+  public List<BOARD> write(BOARD board) {
+    HashMap<String, Object> map = new HashMap();
+    
+    map.put("userNo" , board.getUserNo());
+    map.put("title" , board.getTitle());
+    map.put("content" , board.getContent());
+    map.put("userName" , board.getUserName());
+    
+ // 현재 날짜 구하기   
+    LocalDate now = LocalDate.now();         
+    // 포맷 정의       
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");         
+    // 포맷 적용        
+    String formatedNow = now.format(formatter);         
+    // 결과 출력        
+    map.put("registDate", formatedNow);
+    map.put("updateDate", "");
+    List<BOARD> list = boardMapper.write(map);
+    
+    
+    return list;
+  }
 }

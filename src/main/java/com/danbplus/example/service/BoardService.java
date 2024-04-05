@@ -28,4 +28,8 @@ public class BoardService {
   public List<BOARD> getDetailInfo(int num) {
     return boardRepository.getDetailInfo(num);
   }
+  
+  public List<BOARD> write(BOARD board) {
+    return boardRepository.write(board);
+  }
 }

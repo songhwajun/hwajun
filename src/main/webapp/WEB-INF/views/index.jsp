@@ -106,7 +106,7 @@ text-decoration-line : none;}
 	<span class="right";>
 		<button id="join">회원가입</button>
 		<button id="login">로그인</button>
-		<input type="button" value="글쓰기"  class="gradient";>
+		<input type="button" id="write" value="글쓰기"  class="gradient";>
 	</span>
 </div>
 <script type="text/javascript" src="/resource/jquery/jquery-3.6.1.min.js"></script>
@@ -132,5 +132,8 @@ text-decoration-line : none;}
 		    window.location.href = url;
 		});
 	
+		$(dom).find("#write").on('click', function(){
+			location.href = "/write"
+		});
 	});
 </script>

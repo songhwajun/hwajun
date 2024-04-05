@@ -42,6 +42,7 @@ public class LoginController {
     return mv;
   }
   
+  //아이디 중복체크
   @ResponseBody
   @RequestMapping("/LoginController/duplicateCheck.act")
   public int duplicateCheck(LOGIN login, Model model) {
@@ -54,6 +55,7 @@ public class LoginController {
     return duplicateCheck;
   }
   
+  //회원가입, 회원정보 등록
   @ResponseBody
   @RequestMapping("/LoginController/join.act")
   public String join(LOGIN login, MEMBER member, Model model) {
