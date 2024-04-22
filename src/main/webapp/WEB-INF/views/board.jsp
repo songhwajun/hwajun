@@ -59,16 +59,19 @@ text-decoration-line : none;}
     </style>
 </head>
 <div id="boardJsp">
+	<h2> 게시판 </h2>
+	<hr class ="hr1" noshade> 
+	<br>
 	<div>
 		<c:forEach var="item" items="${boardList}">
 	    	<div>
 	    		<label>제목 :</label>
-	    		<input class="form-control" id="title" name="title" value="${item.title}" disabled />
+	    		<input class="form-control" id="new_title" name="title" value="${item.title}" disabled />
 	    	</div>
 	    	<br>	
 	    	<div>
 	    		<label>내용 :</label>
-	    		<textarea class="form-control" id="content" rows="3" name="content" disabled>${item.content}</textarea>
+	    		<textarea class="form-control" id="new_content" rows="3" name="content" disabled>${item.content}</textarea>
 	    	</div>
 	    	<div style="display:none;">
 	    		<input type="hidden" id="boardNum" value="${item.boardNum}"/>
@@ -80,13 +83,14 @@ text-decoration-line : none;}
 		</c:forEach>
     </div>
     <span class="left;" id="type1">
-    	<input type="button" id="modify" value="글수정" style="margin-top: 50px;">
-		<input type="button" id="back" value="글목록" style="margin-top: 50px;">
+    	<input type="button" id="back" value="뒤로가기" style="margin-top: 50px;">
+    	<input type="button" id="modify" value="글 수정" style="margin-top: 50px;">
+    	<input type="button" id="delete" value="글 삭제" style="margin-top: 50px;">
 	</span>
 	
 	<span class="left;" id="type2" style="display:none;">
     	<input type="button" id="modify_finish" value="수정완료" style="margin-top: 50px;">
-    	<input type="button" id="modify_cancle" value="수정취소" style="margin-top: 50px;">
+    	<input type="button" id="modify_cancle" value="취소" style="margin-top: 50px;">
 	</span>
 	
 </div>
@@ -96,6 +100,8 @@ text-decoration-line : none;}
 
 <script type="text/javascript">
 	documentReady("#boardJsp" , function(dom){
+		
+		var beforeText = "";
 		
 		//글 목록(뒤로가기)
 		$(dom).find("#back").on('click', function(){
@@ -107,8 +113,8 @@ text-decoration-line : none;}
 			$(dom).find("#type2").show();
 			$(dom).find("#type1").hide();
 			
-			$(dom).find("#title").attr('disabled', false);
-			$(dom).find("#content").attr('disabled', false);
+			$(dom).find("#new_title").attr('disabled', false);
+			$(dom).find("#new_content").attr('disabled', false);
 		});
 		
 		//수정취소
@@ -116,8 +122,16 @@ text-decoration-line : none;}
 			$(dom).find("#type1").show();
 			$(dom).find("#type2").hide();
 			
-			$(dom).find("#title").attr('disabled', true);
-			$(dom).find("#content").attr('disabled', true);
+			console.log('test');
+			$(dom).find("#new_title").attr('disabled', true);
+			$(dom).find("#new_content").attr('disabled', true);
+			
+			
+			var beforeTitle = $(dom).find("#title").val();
+			var beforeContent = $(dom).find("#content").val();
+			
+			$(dom).find("#new_title").val(beforeTitle);
+			$(dom).find("#new_content").val(beforeContent);
 			
 		})
 		
@@ -129,10 +143,8 @@ text-decoration-line : none;}
 			param.boardNum = $(dom).find("#boardNum").val();
 			param.userNo = $(dom).find("#userNo").val();
 			param.userName = $(dom).find("#userName").val();
-			param.title = $(dom).find("#title").val();
-			param.content = $(dom).find("#content").val();
-			
-			console.log(param);
+			param.title = $(dom).find("#new_title").val();
+			param.content = $(dom).find("#new_content").val();
 			
 			ajaxAction(param, "text", "/BoardController/modify.act", function(data){
 				//alert(data);
@@ -142,6 +154,23 @@ text-decoration-line : none;}
 			    
 			});
 		})
+		
+		//글 삭제
+		$(dom).find("#delete").on('click', function(){
+			var delConfirm = confirm('정말 삭제하시겠습니까?');
+			if (delConfirm) {
+				
+				var param = {};
+				param.boardNum = $(dom).find("#boardNum").val();
+				
+				ajaxAction(param, "text", "/BoardController/delete.act", function(data){
+					alert(data);
+					document.location.href = "/";
+				});
+			}
+			
+		});
+		
 	});
 </script>
 

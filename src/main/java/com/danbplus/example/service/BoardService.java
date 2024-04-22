@@ -37,4 +37,7 @@ public class BoardService {
     return boardRepository.modify(board);
   }
   
+  public String delete(String boardNum) {
+    return boardRepository.delete(boardNum);
+  }
 }

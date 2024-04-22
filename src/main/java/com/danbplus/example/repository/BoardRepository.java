@@ -11,4 +11,5 @@ public interface BoardRepository {
   List<BOARD> getDetailInfo(int num); // 특정 글 상세정보
   List<BOARD> write(BOARD board); // 글 작성
   List<BOARD> modify(BOARD board); // 글 수정
+  String delete(String boardNum); // 글 삭제
 }

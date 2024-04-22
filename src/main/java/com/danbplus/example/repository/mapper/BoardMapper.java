@@ -12,4 +12,5 @@ public interface BoardMapper {
   List<BOARD> getDetailInfo(int num);
   List<BOARD> write(HashMap map);
   List<BOARD> modify(HashMap map);
+  void delete(HashMap map);
 }

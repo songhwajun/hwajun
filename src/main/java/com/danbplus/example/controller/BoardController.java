@@ -92,5 +92,24 @@ public class BoardController {
     return result;
   }
   
+  //글 삭제 
+  @ResponseBody
+  @RequestMapping("/BoardController/delete.act")
+  public String delete(BOARD board, Model model) {
+    log.info("/BoardController/modify.act || model :: " + model);
+    log.info("삭제");
+    
+    String result = "성공적으로 삭제되었습니다.";
+    String errMsg = "";
+    
+    String boardNum = board.getBoardNum() + "";
+    try {
+        boardService.delete(boardNum);
+    } catch (Exception e) {
+        errMsg = e.getMessage();
+    }
+    
+    return result;
+  }
   
 }

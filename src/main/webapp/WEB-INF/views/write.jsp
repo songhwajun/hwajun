@@ -60,7 +60,10 @@ text-decoration-line : none;}
     </style>
 </head>
 <div id="writeJsp">
-	<div class="panel-heading">게시글 작성하기</div>
+	<h2> 게시판 글 작성 </h2>
+	<hr class ="hr1" noshade> 
+	<br>
+	
 	<div class="panel-body">
 			<!-- 
 			<div class="form-group">
@@ -72,13 +75,13 @@ text-decoration-line : none;}
 				<label>제목</label> 
                 <input class="form-control" id="title" name="title">
 			</div>
+			<br>
 			<div class="form-group">
 				<label>내용</label>
 					<textarea class="form-control" id="content" rows="3" name="content"></textarea>
 			</div>	
-		
-			<input type="button" id="submit" class="btn btn-default" value="글 등록하기" style=	"margin-top: 50px;">
-			<input type="button" id="back" class="btn btn-default" value="글 목록보기" style="margin-top: 50px;">
+			<input type="button" id="back" class="btn btn-default" value="뒤로가기" style="margin-top: 50px;">
+			<input type="button" id="submit" class="btn btn-default" value="등록" style=	"margin-top: 50px;">
 	</div>
 </div>
 

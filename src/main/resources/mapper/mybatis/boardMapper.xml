@@ -64,4 +64,9 @@
 		WHERE
 			boardNum = #{boardNum}
 	</update>
+	
+	<delete id="delete" parameterType="hashMap">
+		DELETE FROM BOARD
+		WHERE boardNum = #{boardNum}
+	</delete>
 </mapper>

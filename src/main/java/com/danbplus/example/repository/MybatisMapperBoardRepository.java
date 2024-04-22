@@ -92,4 +92,12 @@ public class MybatisMapperBoardRepository implements BoardRepository{
     return list;
   }
   
+  public String delete(String boardNum) {
+    HashMap<String, Object> map = new HashMap();
+    map.put("boardNum", boardNum);
+    
+    boardMapper.delete(map);
+    
+    return "";
+  }
 }
