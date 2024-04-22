@@ -1,7 +1,6 @@
 <%@ page pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -64,11 +63,12 @@ text-decoration-line : none;}
 		<c:forEach var="item" items="${boardList}">
 	    	<div>
 	    		<label>제목 :</label>
-	    		<span>${item.title}</span>
+	    		<input class="form-control" id="title" name="title" value="${item.title}" disabled />
 	    	</div>
+	    	<br>	
 	    	<div>
 	    		<label>내용 :</label>
-	    		<span>${item.content}</span>
+	    		<textarea class="form-control" id="content" rows="3" name="content" disabled>${item.content}</textarea>
 	    	</div>
 	    	<div style="display:none;">
 	    		<input type="hidden" id="boardNum" value="${item.boardNum}"/>
@@ -79,10 +79,16 @@ text-decoration-line : none;}
 	    	</div>
 		</c:forEach>
     </div>
-    <span class="left;">
+    <span class="left;" id="type1">
     	<input type="button" id="modify" value="글수정" style="margin-top: 50px;">
 		<input type="button" id="back" value="글목록" style="margin-top: 50px;">
 	</span>
+	
+	<span class="left;" id="type2" style="display:none;">
+    	<input type="button" id="modify_finish" value="수정완료" style="margin-top: 50px;">
+    	<input type="button" id="modify_cancle" value="수정취소" style="margin-top: 50px;">
+	</span>
+	
 </div>
 
 <script type="text/javascript" src="/resource/jquery/jquery-3.6.1.min.js"></script>
@@ -98,6 +104,25 @@ text-decoration-line : none;}
 	
 		//글 수정
 		$(dom).find("#modify").on('click', function(){
+			$(dom).find("#type2").show();
+			$(dom).find("#type1").hide();
+			
+			$(dom).find("#title").attr('disabled', false);
+			$(dom).find("#content").attr('disabled', false);
+		});
+		
+		//수정취소
+		$(dom).find("#modify_cancle").on('click', function(){
+			$(dom).find("#type1").show();
+			$(dom).find("#type2").hide();
+			
+			$(dom).find("#title").attr('disabled', true);
+			$(dom).find("#content").attr('disabled', true);
+			
+		})
+		
+		//글 수정완료
+		$(dom).find("#modify_finish").on('click', function(){
 			var test = "${boardList}" || "";
 			
 			var param = {};
@@ -108,7 +133,15 @@ text-decoration-line : none;}
 			param.content = $(dom).find("#content").val();
 			
 			console.log(param);
-		});
+			
+			ajaxAction(param, "text", "/BoardController/modify.act", function(data){
+				//alert(data);
+				
+				var url = "/boardDetail?num=" + param.boardNum;
+			   window.location.href = url;
+			    
+			});
+		})
 	});
 </script>
 

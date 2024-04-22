@@ -54,4 +54,14 @@
 		)
 	</insert>
 	
+	<update id="modify" useGeneratedKeys="true" keyProperty="boardNum" parameterType="hashMap">
+		UPDATE BOARD
+		SET
+			title = #{title}
+			, content = #{content}
+			, updateDate = #{updateDate}
+			, userName = #{userName}
+		WHERE
+			boardNum = #{boardNum}
+	</update>
 </mapper>

@@ -79,12 +79,12 @@ public class BoardController {
   @RequestMapping("/BoardController/modify.act")
   public String modify(BOARD board, Model model) {
     log.info("/BoardController/modify.act || model :: " + model);
-    
+    log.info("수정");
     String result = "글이 정상적으로 수정되었습니다.";
     String errMsg = "";
     
     try {
-        //boardService.modify(board);
+        boardService.modify(board);
     } catch (Exception e) {
         errMsg = e.getMessage();
     }

@@ -65,4 +65,31 @@ public class MybatisMapperBoardRepository implements BoardRepository{
     
     return list;
   }
+  
+  /**
+   * 게시판 글 수정 
+   */
+  @Override
+  public List<BOARD> modify(BOARD board) {
+    HashMap<String, Object> map = new HashMap();
+    map.put("boardNum", board.getBoardNum());
+    map.put("userNo" , board.getUserNo());
+    map.put("title" , board.getTitle());
+    map.put("content" , board.getContent());
+    map.put("userName" , board.getUserName());
+    
+ // 현재 날짜 구하기   
+    LocalDate now = LocalDate.now();         
+    // 포맷 정의       
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");         
+    // 포맷 적용        
+    String formatedNow = now.format(formatter);         
+    // 결과 출력        
+    map.put("updateDate", formatedNow);
+    log.info("테스트진행중 " + map);
+    List<BOARD> list = boardMapper.modify(map);
+    
+    return list;
+  }
+  
 }

@@ -31,11 +31,6 @@ spring:
         
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    jdbc-url: jdbc:mysql://dev.danbplus.com:53306/danbplusSTS_SHJ?UTC&allowPublickeyRetrieval=true
+    url: jdbc:mysql://dev.danbplus.com:53306/danbplusSTS_SHJ?UTC&allowPublickeyRetrieval=true
     username: danbplus
     password: Danb1235!!
-    maximum-pool-size: 5
-    max-lifetime: 1800000
-    idle-timeout: 180000
-    connection-timeout: 5000
-    transaction-isolation: TRANSACTION_READ_UNCOMMITTED

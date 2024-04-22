@@ -32,4 +32,9 @@ public class BoardService {
   public List<BOARD> write(BOARD board) {
     return boardRepository.write(board);
   }
+  
+  public List<BOARD> modify(BOARD board) {
+    return boardRepository.modify(board);
+  }
+  
 }

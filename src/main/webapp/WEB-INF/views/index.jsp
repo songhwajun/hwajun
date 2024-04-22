@@ -104,8 +104,10 @@ text-decoration-line : none;}
 	</div>
 	 -->
 	<span class="right";>
+	<!-- 
 		<button id="join">회원가입</button>
 		<button id="login">로그인</button>
+	-->
 		<input type="button" id="write" value="글쓰기"  class="gradient";>
 	</span>
 </div>
@@ -127,11 +129,18 @@ text-decoration-line : none;}
 		$(document).on("click", "#boardTable tr", function () {
 			var tr = $(this);
 			var boardNum = tr.find("td:eq(0)").text();
+			console.log('test');
+			
+			if(boardNum == ""){
+				console.log("리스트 상단 제목영역 선택");
+				return;	
+			}
 			
 			var url = "/boardDetail?num=" + boardNum;
 		    window.location.href = url;
 		});
 	
+		//글쓰기
 		$(dom).find("#write").on('click', function(){
 			location.href = "/write"
 		});
