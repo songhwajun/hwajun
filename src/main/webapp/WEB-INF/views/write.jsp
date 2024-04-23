@@ -82,7 +82,7 @@ text-decoration-line : none;}
 			</div>	
 			<input type="button" id="back" class="btn btn-default" value="뒤로가기" style="margin-top: 50px;">
 			<input type="button" id="submit" class="btn btn-default" value="등록" style=	"margin-top: 50px;">
-	</div>
+	</div>	
 </div>
 
 <script type="text/javascript" src="/resource/jquery/jquery-3.6.1.min.js"></script>
