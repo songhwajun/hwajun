@@ -23,15 +23,14 @@ public class HomeController {
     this.boardService = boardService;
   }
   
-  
-  //회원가입 페이지 출력 요청
+ 
   @RequestMapping("/")
   public ModelAndView index() {
     ModelAndView mv = new ModelAndView();
     
     //게시글 목록
     List<BOARD> boardList = boardService.boardList();        //게시글 목록조회
-    log.info("" + boardList);
+    log.info("게시글 목록조회 : " + boardList);
     
     mv.addObject("boardList", boardList);
     mv.setViewName("/index");
