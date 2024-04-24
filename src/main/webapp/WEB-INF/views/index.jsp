@@ -92,7 +92,7 @@ text-decoration-line : none;}
 		        </td>
 		        <td class="center" id="userName">${item.userName}</td>
 		        <td class="center" id="registDate">${item.registDate}</td>
-		    </tr>
+		    </tr>	
 	    </c:forEach>
 	</table>
 	<br>
