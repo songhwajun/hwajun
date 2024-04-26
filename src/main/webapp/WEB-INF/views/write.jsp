@@ -49,7 +49,7 @@ background:  #d3d3d3;}
   background: linear-gradient( to bottom, grey, black );
   border: solid 2px white;
   border-radius: 5px;
-  }
+  }	
 
             .left {text-align: left;}
             .right {  float: right;}
