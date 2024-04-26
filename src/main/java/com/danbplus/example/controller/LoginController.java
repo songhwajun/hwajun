@@ -12,7 +12,7 @@ import com.danbplus.example.domain.LOGIN;
 import com.danbplus.example.service.MemberService;
 import com.danbplus.example.service.LoginService;
 import lombok.extern.slf4j.Slf4j;
-
+  
 @Slf4j
 @Controller
 public class LoginController {
